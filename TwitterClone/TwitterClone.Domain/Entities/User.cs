@@ -2,41 +2,28 @@
 {
     public class User
     {
-        private Guid _id;
-        private string _username;
-        private string _email;
-        private string _passwordHash;
-        private DateTime _createdAt;
+        public Guid Id { get; private set; }
+        public string Username { get; private set; }
+        public string Email { get; private set; }
+        public string PasswordHash { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime ModifiedAt { get; private set; }
+        //user class does not inherit BaseEntity
+        //because BaseEntity has a field called CreatedBy
+        //The user is created by the user itself
 
         public User(string username, string email, string passwordHash)
         {
-            _id = Guid.NewGuid();
-            _username = username;
-            _email = email;
-            _passwordHash = passwordHash;
-            _createdAt = DateTime.UtcNow;
+            Id = Guid.NewGuid();
+            Username = username;
+            Email = email;
+            PasswordHash = passwordHash;
+            CreatedAt = DateTime.UtcNow;
         }
-        public Guid Id
+        
+        public void Modified()
         {
-            get { return _id;  }
-        }
-        public string Username{
-            set { _username = value; }
-            get { return _username;  }
-        }
-        public string Email
-        {
-            set { _email = value; }
-            get { return _email;  }
-        }
-        public string PasswordHash
-        {
-            set { _passwordHash = value; }
-            get { return _passwordHash; }
-        }
-        public DateTime CreatedAt
-        {
-            get { return _createdAt; }
+            ModifiedAt= DateTime.UtcNow;
         }
     }
 }
