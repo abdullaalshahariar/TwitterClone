@@ -1,10 +1,9 @@
 ﻿namespace TwitterClone.Domain.Entities
 {
-    public class Tweet:BaseEntity
-    {
+    internal class Comment:BaseEntity
+    {   
         public string Content { get; private set; }
-
-        public Tweet( Guid userId, string content):base(userId)
+        public Comment(Guid userId, string content) : base(userId)
         {
             Content = content;
         }
